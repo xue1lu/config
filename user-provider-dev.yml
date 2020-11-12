@@ -1,0 +1,29 @@
+#端口
+server:
+  port: 18081
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: root
+    url: jdbc:mysql://127.0.0.1:3306/springcloud?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+  #注册到eureka
+  application:
+    name: user-provider  #服务的名字,不同的应用，名字不同，如果是集群，名字需要相同
+
+#配置eureka
+eureka:
+  client:
+    register-with-eureka: true #是否将自己注册到eureka中
+    fetch-registry: true #是否从eureka中获取信息
+    service-url:
+      defaultZone: http://localhost:7001/eureka
+
+    #配置ip地址
+  instance:
+    ip-address: 127.0.0.1
+    prefer-ip-address: true
+    lease-expiration-duration-in-seconds: 90 #服务失效时间
+    lease-renewal-interval-in-seconds: 30 #服务续租时间间隔
+
+
